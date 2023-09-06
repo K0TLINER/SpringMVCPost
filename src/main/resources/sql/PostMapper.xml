@@ -36,6 +36,10 @@
 		WHERE post_No = #{postNo}
 	</select>
 	
-	
+	<select id = "getPostList"  resultMap = "postSelectMap">
+		SELECT *
+		FROM posts
+		ORDER BY post_no
+	</select>
 
 </mapper>

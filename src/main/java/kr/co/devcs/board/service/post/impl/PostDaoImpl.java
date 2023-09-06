@@ -31,3 +31,21 @@ public class PostDaoImpl implements PostDao{
 	}
 
 }
+
+@Repository("postDaoImpl")
+public class PostDaoImpl implements PostDao{
+	
+	@Autowired
+	@Qualifier("sqlSessionTemplate")
+	private SqlSession sqlSession;
+	public void setSqlSession(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+	
+	public PostDaoImpl() {}
+	
+	public List<Post> getPostList() throws Exception{
+		
+		return  sqlSession.selectList("PostMapper.getPostList");
+	}
+}
