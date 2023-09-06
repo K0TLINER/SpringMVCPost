@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="PostMapper">
+
+	<resultMap id="postSelectMap" type="post">
+	
+		<result property="postNo" column="POST_NO" jdbcType="INTEGER"/>
+		<result property="postTitle" column="POST_TITLE" jdbcType="VARCHAR"/>
+		<result property="postContent" column="POST_CONTENT" jdbcType="VARCHAR"/>
+		<result property="regDate" column="REG_DATE" jdbcType="TIMESTAMP"/>
+		<!-- 
+			<association property="comment" javaType="comment">
+				<id property="postNo" column="POST_NO" jdbcType="INTEGER"/>
+				<result property="postTitle" column="POST_TITLE" jdbcType="VARCHAR"/>
+				<result property="postContent" column="POST_CONTENT" jdbcType="VARCHAR"/>
+				<result property="regDate" column="REG_DATE" jdbcType="VARCHAR"/>
+				
+			</association>
+		
+		 -->
+		
+	</resultMap>
+	
+	<select id="getPost" parameterType="int" resultMap="postSelectMap">
+		SELECT POST_NO,POST_TITLE,POST_CONTENT,REG_DATE
+		FROM posts
+		WHERE post_No = #{postNo}
+	</select>
+	
+	
+
+</mapper>
