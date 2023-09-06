@@ -23,4 +23,11 @@ public class PostDaoImpl implements PostDao{
 		return sqlSession.selectOne("PostMapper.getPost",postNo);
 	}
 
+	public void addPost(Post post) throws Exception {
+		System.out.println("add Post DaoImpl 시작 .... ");
+		System.out.println(post.toString());
+		sqlSession.insert("PostMapper.addPost", post);
+
+	}
+
 }
