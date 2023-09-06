@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CommentMapper">
+ 	
+ 	<resultMap id="commentSelectMap" type="comment">
+ 		<result property="commentNo"		column="comment_no"			jdbcType="INTEGER"/>
+ 		<result property="postNo"			column="post_no"			jdbcType="INTEGER"/>
+ 		<result property="commentContent"	column="comment_content"	jdbcType="VARCHAR"/>
+ 		<result property="regDate"			column="reg_date"			jdbcType="DATE"/>
+ 	</resultMap>
+	 
+	 <insert 	id="addComment"		parameterType="comment">
+	 	INSERT INTO comments
+	 	VALUES(seq_comment_comment_no.NEXTVAL, #{postNo}, #{commentContent}, sysdate)
+	 </insert>
+	 <select	id="getCommentList"	resultMap="commentSelectMap"		parameterType="int">
+	 	SELECT
+	 		comment_no,
+	 		comment_content,
+	 		c.reg_date
+	 	FROM comments c, posts p
+	 	WHERE c.post_no = p.post_no AND p.post_no = #{value}
+	 </select>
+	 
+	 
+</mapper>
