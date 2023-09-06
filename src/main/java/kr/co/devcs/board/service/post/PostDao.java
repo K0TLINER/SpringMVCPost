@@ -6,4 +6,6 @@ public interface PostDao {
 
 	Post getPost(int postNo);
 
+	public void addPost(Post post) throws Exception;
+
 }

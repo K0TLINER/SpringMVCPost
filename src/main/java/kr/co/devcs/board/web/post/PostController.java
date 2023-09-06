@@ -35,4 +35,18 @@ public class PostController {
 		
 		return modelAndView;
 	}
+
+	@RequestMapping(value = "addPost", method = RequestMethod.POST)
+	public ModelAndView addPost(@ModelAttribute Post post)throws Exception{
+		System.out.println("addPost Start ... ");
+		System.out.println("post toString().. = > "  + post);
+
+		postService.addPost(post);
+
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/index.jsp");
+
+		System.out.println("addPost Start ... ");
+		return modelAndView;
+	}
 }

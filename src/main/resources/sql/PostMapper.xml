@@ -24,6 +24,11 @@
 		 -->
 		
 	</resultMap>
+
+	<insert id="addPost" parameterType="post">
+    		INSERT INTO posts(post_no, post_title, post_content, reg_date)
+    		VALUES(seq_post_post_no.nextval, #{postTitle}, #{postContent}, SYSTIMESTAMP)
+	</insert>
 	
 	<select id="getPost" parameterType="int" resultMap="postSelectMap">
 		SELECT POST_NO,POST_TITLE,POST_CONTENT,REG_DATE

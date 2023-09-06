@@ -23,4 +23,9 @@ public class PostServiceImpl implements PostService{
 		System.out.println(postNo);
 		return postDao.getPost(postNo);
 	}
+
+	public void addPost(Post post) throws Exception {
+		System.out.println("add Post ServiceImpl 시작 .... ");
+		postDao.addPost(post);
+	}
 }
