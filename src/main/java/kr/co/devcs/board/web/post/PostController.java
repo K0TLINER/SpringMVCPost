@@ -47,6 +47,18 @@ public class PostController {
 		modelAndView.setViewName("/index.jsp");
 
 		System.out.println("addPost Start ... ");
+	}
+		
+	@RequestMapping(value = "getPostList", method = RequestMethod.GET)
+	public ModelAndView getPostList() throws Exception{
+		
+		System.out.println("=====controller operate=====");
+		
+		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("list", postService.getPostList());
+		modelAndView.setViewName("/post/getPostList.jsp");
+		
 		return modelAndView;
 	}
 }

@@ -8,4 +8,6 @@ public interface PostService {
 
 	public Post getPost(int postNo);
 
+	public List<Post> getPostList()throws Exception;
+
 }

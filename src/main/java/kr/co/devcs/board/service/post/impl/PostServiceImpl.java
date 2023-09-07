@@ -29,3 +29,27 @@ public class PostServiceImpl implements PostService{
 		postDao.addPost(post);
 	}
 }
+
+@Service("postServiceImpl")
+public class PostServiceImpl implements PostService{
+	
+	@Autowired
+	@Qualifier("postDaoImpl")
+	private PostDao postDao;
+	public void setPostDao(PostDao postDao) {
+		this.postDao = postDao;
+	}
+	
+	public PostServiceImpl() {
+		System.out.println(this.getClass());
+	}
+	
+	public List<Post> getPostList() throws Exception{
+		
+		List<Post> list = postDao.getPostList(); 
+		
+		return list;
+	}
+	
+
+}
